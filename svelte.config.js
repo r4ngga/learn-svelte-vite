@@ -5,6 +5,10 @@ const config = {
     preprocess({
       postcss: true,
     }),
+    // sass: {
+    //   sync: true,
+    //   implementation: require('sass'),
+    // },
   ],
 };
 

@@ -5,7 +5,7 @@
   <header class="global-header">
     <div class="app-name">
       <img src={logo} alt="Svelte Logo" class="logo"/>
-      <div class="title">Notes App</div>
+      <div class="title">Notes App With Vite</div>
     </div>
   </header>
   

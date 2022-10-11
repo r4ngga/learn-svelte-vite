@@ -9,13 +9,21 @@
     "preview": "vite preview"
   },
   "devDependencies": {
+    "@fortawesome/free-solid-svg-icons": "^6.2.0",
     "@sveltejs/vite-plugin-svelte": "^1.0.2",
     "autoprefixer": "^10.4.7",
+    "node-sass": "^7.0.3",
     "postcss": "^8.4.14",
     "postcss-load-config": "^4.0.1",
     "svelte": "^3.49.0",
+    "svelte-fa": "^3.0.3",
     "svelte-preprocess": "^4.10.7",
     "tailwindcss": "^3.1.5",
     "vite": "^3.1.0"
+  },
+  "dependencies": {
+    "moment": "^2.29.4",
+    "node-scss": "^7.0.3",
+    "scss": "^0.2.4"
   }
 }

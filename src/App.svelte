@@ -2,11 +2,14 @@
   import svelteLogo from './assets/svelte.svg'
   import Counter from './lib/Counter.svelte'
   import Header from './Header.svelte'
+  import Home from './pages/Home.svelte'
 </script>
 
 <Header />
 
-<main>
+<Home />
+
+<!-- <main>
   <div>
     <a href="https://vitejs.dev" target="_blank"> 
       <img src="/vite.svg" class="logo" alt="Vite Logo" />
@@ -46,4 +49,4 @@
   .read-the-docs {
     color: #888;
   }
-</style>
+</style> -->
