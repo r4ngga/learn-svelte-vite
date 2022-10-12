@@ -1,12 +1,21 @@
 <script>
   import svelteLogo from './assets/svelte.svg'
   import Counter from './lib/Counter.svelte'
+  
   import Header from './Header.svelte'
+  import {afterUpdate} from 'svelte';
+  import Home from './pages/Home.svelte'
+
+ 
 </script>
 
 <Header />
 
-<main>
+<!-- <AddNoteModal addNoteList={addNote} title={nameheader}/> -->
+
+<Home />
+
+<!-- <main>
   <div>
     <a href="https://vitejs.dev" target="_blank"> 
       <img src="/vite.svg" class="logo" alt="Vite Logo" />
@@ -29,7 +38,7 @@
     Click on the Vite and Svelte logos to learn more
   </p>
   <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Check this</button>
-</main>
+</main> -->
 
 <style>
   .logo {
