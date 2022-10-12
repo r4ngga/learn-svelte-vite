@@ -1,28 +1,17 @@
 <script >
-    // ---------------------------------------------------------
     //  Global Imports
-    // ---------------------------------------------------------
   
     import Fa from 'svelte-fa/src/fa.svelte'
     import { faPlus } from '@fortawesome/free-solid-svg-icons';
   
-    // ---------------------------------------------------------
-    //  Type Imports
-    // ---------------------------------------------------------
-  
-    // import type { NoteType } from '@/types/app'
-  
-    // ---------------------------------------------------------
+
     //  Component Imports
-    // ---------------------------------------------------------
   
     import Note from '../pages/components/Note.svelte'
     import EditNoteModal from '../pages/components/EditNoteModal.svelte'
     import DeleteNoteModal from '../pages/components/DeleteNoteModal.svelte'
   
-    // ---------------------------------------------------------
     //  Varaible Declarations
-    // ---------------------------------------------------------
   
     let notesJSONString = localStorage.getItem('notes')
   
@@ -64,9 +53,8 @@
       ]
     }
   
-    // ---------------------------------------------------------
+
     //  Edit Modal Methods
-    // ---------------------------------------------------------
   
     // For Editing
     let noteToEdit;
@@ -74,8 +62,6 @@
   
     /**
      * Display the Note details modal
-     *
-     * 
      */
     const openEditNote = (note) => {
       noteToEdit = {}
@@ -89,25 +75,20 @@
   
     /**
      * Close the Note details modal
-     *
      */
     const closeEditModal = () => {
       noteToEdit = {}
       showEditModal = false
     }
   
-    // ---------------------------------------------------------
     //  Delete Modal Methods
-    // ---------------------------------------------------------
   
     // For Deleting
     let noteToDelete;
     let showDeleteModal = false
   
     /**
-     * Display the Note details modal
-     *
-     * 
+     * Display the Note details modal     
      */
     const openDeleteNote = (event) => {
       const deleteNoteIndex = event.detail;
@@ -122,16 +103,13 @@
   
     /**
      * Close the Note details modal
-     *
+
      */
     const closeDeleteModal = () => {
       noteToDelete = {}
       showDeleteModal = false
     }
   
-    // ---------------------------------------------------------
-    //  Note Related Methods
-    // ---------------------------------------------------------
   
     /**
      * Save notes in the local storage
