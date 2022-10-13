@@ -73,32 +73,30 @@
         return true;
       }
     });
-
-
   }
 
-  const saveNote = (event) => {
-    const note = event.detail;
-    const noteIndex = noteItem.findIndex(item => item.id === note.id);
+  // const saveNote = (event) => {
+  //   const note = event.detail;
+  //   const noteIndex = noteItem.findIndex(item => item.id === note.id);
 
-    if(noteIndex !== -1){
-      noteItem[noteIndex] = note;
-    }else{
-      noteItem.push(note);
-    }
-    saveNotesToStorage();
-  }
+  //   if(noteIndex !== -1){
+  //     noteItem[noteIndex] = note;
+  //   }else{
+  //     noteItem.push(note);
+  //   }
+  //   saveNotesToStorage();
+  // }
 
   function addNote({id, title, content, date, isFavorite, tags}){
     console.log({id: noteItem.length+1,title, content, date, isFavorite:false, tags});
     noteItem.push({id: noteItem.length+1,title, content, date, isFavorite:false, tags});
     localStorage.setItem("NoteItem", JSON.stringify(noteItem));
-    // notes = [...notes,{ id: notes.length+1, title, content, date, isFavorite, tags}];
+    noteItem = noteItem;
   }
 
   const saveNotesToStorage = () => {
 
-    noteItem = noteItem
+    noteItem = noteItem;
 
     localStorage.setItem("NoteItem", JSON.stringify(noteItem));
 
@@ -289,7 +287,8 @@
     {#each noteItem as note (note.id)}
       <div>
           <Note
-          {...note}          
+          {...note}        
+            on:toggleFavorite="{toggleFavorite}"
           />
       </div>
         

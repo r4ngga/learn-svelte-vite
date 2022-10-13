@@ -13,19 +13,40 @@
     export let tags ;
 
     //variable declaration
-    let tagString = tags && tags.length ? tags.join(',') : ''
+    let tagString = tags && tags.length ? tags.join(',') : '';
+    let noteItem = [];
+    const saveNote = (event) => {
+    const note = event.detail;
+    const noteIndex = noteItem.findIndex(item => item.id === note.id);
+
+    if(noteIndex !== -1){
+      noteItem[noteIndex] = note;
+    }else{
+      noteItem.push(note);
+    }
+    saveNotesToStorage();
+  }
+
+    const saveNotesToStorage = () => {
+
+    noteItem = noteItem
+
+    localStorage.setItem("NoteItem", JSON.stringify(noteItem));
+
+    }
 
     function handleSubmit(){
         event.preventDefault();
-        id ;
-        title ;
-        content ;
+        
         tags = tagString.replace(/\s/g,'').split(',').filter(item => item);
         date = moment().format('YYYYMMDDHHmmss');
         isFavorite = false;
         addNoteList({id, title, content, date, isFavorite, tags});
-
-        
+        id = "";
+        title = "";
+        content = "";
+        tags = "";
+        // saveNotesToStorage();
     }   
 </script>
 
