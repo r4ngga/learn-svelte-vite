@@ -5,6 +5,7 @@
   import { faPlus } from '@fortawesome/free-solid-svg-icons';
   import {afterUpdate} from 'svelte';
   import AddNoteModal from '../components/AddNoteModal.svelte';
+  import EditNoteModal from '../components/EditNoteModal.svelte';
   import Note from '../components/Note.svelte';
 
   // export let title;
@@ -75,17 +76,17 @@
     });
   }
 
-  // const saveNote = (event) => {
-  //   const note = event.detail;
-  //   const noteIndex = noteItem.findIndex(item => item.id === note.id);
+  const saveNote = (event) => {
+    const note = event.detail;
+    const noteIndex = noteItem.findIndex(item => item.id === note.id);
 
-  //   if(noteIndex !== -1){
-  //     noteItem[noteIndex] = note;
-  //   }else{
-  //     noteItem.push(note);
-  //   }
-  //   saveNotesToStorage();
-  // }
+    if(noteIndex !== -1){
+      noteItem[noteIndex] = note;
+    }else{
+      noteItem.push(note);
+    }
+    saveNotesToStorage();
+  }
 
   function addNote({id, title, content, date, isFavorite, tags}){
     console.log({id: noteItem.length+1,title, content, date, isFavorite:false, tags});
@@ -100,6 +101,24 @@
 
     localStorage.setItem("NoteItem", JSON.stringify(noteItem));
 
+  }
+
+  let noteToEdit;
+  let showEditModal = false;
+
+  const openEditNote = (noteItem) => {
+    noteToEdit = {}
+
+    if(noteItem){
+      noteToEdit = noteItem;
+    }
+
+    showEditModal = true;
+  }
+
+  const closeEditModal = () => {
+    noteToEdit = {}
+    showEditModal = false;
   }
 
   // //  Component Imports
@@ -287,13 +306,22 @@
     {#each noteItem as note (note.id)}
       <div>
           <Note
-          {...note}        
+          {...note}   
+            on:click="{() => {openEditNote(note)}}"     
             on:toggleFavorite="{toggleFavorite}"
           />
       </div>
         
     {/each}      
   </div>
+
+  {#if showEditModal}
+    <EditNoteModal 
+      {...noteToEdit}
+      on:save="{saveNote}"
+      on:close="{closeEditModal}"
+    />
+  {/if}
   
   <!-- <div class="max-w-sm rounded overflow-hidden shadow-lg">
     <img class="w-full" src="./static/card-top.jpg" alt="Sunset in the mountains">

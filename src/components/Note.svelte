@@ -29,10 +29,13 @@
 </script>
 
 <!-- {#each noteItem as note} -->
-<div class="max-w-sm rounded overflow-hidden shadow-lg">
+<div class="max-w-sm rounded overflow-hidden shadow-lg" on:click>
   <img class="w-full" src="./static/card-top.jpg" alt="Sunset in the mountains">
   <div class="px-6 py-4">
-    <div class="font-bold text-xl mb-2">{title}</div>
+    <div class="font-bold text-xl mb-2">
+      <a data-modal-toggle="modal-{id}">{title}</a>
+      
+    </div>
     <p class="text-gray-700 text-base">
         {trimContent(content)}
     </p>
